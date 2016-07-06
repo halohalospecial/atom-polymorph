@@ -2,6 +2,23 @@
 
 Simultaneously edit multiple text ranges with related meanings, but different forms.
 
+## Screenshots
+Easier to explain with screenshots! :)
+
+![case1](https://github.com/halohalospecial/atom-polymorph/blob/master/images/case1.gif?raw=true)
+
+![case2](https://github.com/halohalospecial/atom-polymorph/blob/master/images/case2.gif?raw=true)
+
+![cardinality](https://github.com/halohalospecial/atom-polymorph/blob/master/images/cardinality.gif?raw=true)
+
+![verb-form](https://github.com/halohalospecial/atom-polymorph/blob/master/images/verb-form.gif?raw=true)
+
+![color](https://github.com/halohalospecial/atom-polymorph/blob/master/images/color.gif?raw=true)
+
+![inverse](https://github.com/halohalospecial/atom-polymorph/blob/master/images/inverse.gif?raw=true)
+
+![xml](https://github.com/halohalospecial/atom-polymorph/blob/master/images/xml.gif?raw=true)
+
 ## Commands
 
 ### `Polymorph: Mark Next In Any Case And Form`
@@ -21,23 +38,6 @@ Selects all marked text ranges.
 Use this instead of `Core: Paste` to coerce the case of the pasted text into the case of the target selection.  For example, if the copied text is "mark-next-in-any" and the target selection is "casePreservingPaste", the pasted text will become "markNextInAny" because the target is in camel case.
 
 ![paste](https://github.com/halohalospecial/atom-polymorph/blob/master/images/paste.gif?raw=true)
-
-## Screenshots
-Easier to explain with screenshots! :)
-
-![case1](https://github.com/halohalospecial/atom-polymorph/blob/master/images/case1.gif?raw=true)
-
-![case2](https://github.com/halohalospecial/atom-polymorph/blob/master/images/case2.gif?raw=true)
-
-![cardinality](https://github.com/halohalospecial/atom-polymorph/blob/master/images/cardinality.gif?raw=true)
-
-![verb-form](https://github.com/halohalospecial/atom-polymorph/blob/master/images/verb-form.gif?raw=true)
-
-![color](https://github.com/halohalospecial/atom-polymorph/blob/master/images/color.gif?raw=true)
-
-![inverse](https://github.com/halohalospecial/atom-polymorph/blob/master/images/inverse.gif?raw=true)
-
-![xml](https://github.com/halohalospecial/atom-polymorph/blob/master/images/xml.gif?raw=true)
 
 ## Credits
 
