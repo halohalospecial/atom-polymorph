@@ -1,7 +1,7 @@
 {
   "name": "polymorph",
   "main": "./lib/polymorph",
-  "version": "1.0.0",
+  "version": "0.0.0",
   "description": "Simultaneously edit multiple text ranges with related meanings, but different forms.",
   "keywords": [
     "edit",
