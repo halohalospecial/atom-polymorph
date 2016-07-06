@@ -34,7 +34,7 @@ Selects all marked text ranges.
 
 ![select-marked](https://github.com/halohalospecial/atom-polymorph/blob/master/images/select-marked.gif?raw=true)
 
-### `Polymorph: Case-preserving Paste`
+### `Polymorph: Case Preserving Paste`
 Use this instead of `Core: Paste` to coerce the case of the pasted text into the case of the target selection.  For example, if the copied text is "mark-next-in-any" and the target selection is "casePreservingPaste", the pasted text will become "markNextInAny" because the target is in camel case.
 
 ![paste](https://github.com/halohalospecial/atom-polymorph/blob/master/images/paste.gif?raw=true)
