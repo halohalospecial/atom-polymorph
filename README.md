@@ -1,7 +1,6 @@
 # Polymorph
 
 ![polymorph](http://classic.battle.net/war3/images/human/spells/polymorph.gif)
-http://classic.battle.net/war3/images/human/spells/polymorph.gif
 
 Simultaneously edit multiple text ranges with related meanings, but different forms.
 
@@ -41,6 +40,8 @@ Easier to explain with screenshots! :)
 ## Credits
 
 Uses [nlp_compromise](https://www.npmjs.com/package/nlp_compromise) and [tinycolor2](https://www.npmjs.com/package/tinycolor2).
+
+"Polymorph" icon from http://classic.battle.net/war3/images/human/spells/polymorph.gif.
 
 ## Prior Art
 After some searching, the closest I could find is [abolish.vim](http://www.vim.org/scripts/script.php?script_id=1545) by [Tim Pope](http://tpo.pe/).  That vim plugin lets you replace text by specifying some rules (e.g. `:%Subvert/facilit{y,ies}/building{,s}/g` to replace all instances of "facility" with "building" and "facilities" with "buildings").  
