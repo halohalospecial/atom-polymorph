@@ -10,8 +10,12 @@ Marks the next text range which has a similar meaning, but different letter case
 ### `Polymorph: Skip Last Marked`
 Unmarks the last marked text range.  Invoking `Polymorph: Mark Next In Any Case And Form` again will mark the next matching text range, skipping the unmarked one.  This command is useful if Polymorph marked an incorrect text range.
 
+![skip](https://github.com/halohalospecial/atom-polymorph/blob/master/images/skip.gif?raw=true)
+
 ### `Polymorph: Select All Marked`
 Selects all marked text ranges.
+
+![select-marked](https://github.com/halohalospecial/atom-polymorph/blob/master/images/select-marked.gif?raw=true)
 
 ### `Polymorph: Case-preserving Paste`
 Use this instead of `Core: Paste` to coerce the case of the pasted text into the case of the target selection.  For example, if the copied text is "mark-next-in-any" and the target selection is "casePreservingPaste", the pasted text will become "markNextInAny" because the target is in camel case.
