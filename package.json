@@ -1,0 +1,23 @@
+{
+  "name": "polymorph",
+  "main": "./lib/polymorph",
+  "version": "0.0.0",
+  "description": "Simultaneously edit multiple text ranges with related meanings, but different forms.",
+  "keywords": [
+    "edit",
+    "editing",
+    "morph",
+    "multi-cursor",
+    "multiple cursors"
+  ],
+  "activationCommands": {},
+  "repository": "https://github.com/halohalospecial/atom-polymorph",
+  "license": "MIT",
+  "engines": {
+    "atom": ">=1.0.0 <2.0.0"
+  },
+  "dependencies": {
+    "nlp_compromise": "6.4.6",
+    "tinycolor2": "1.3.0"
+  }
+}

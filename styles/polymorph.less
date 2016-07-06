@@ -1,0 +1,24 @@
+@import "ui-variables";
+@import "syntax-variables";
+
+.polymorph {
+  &.round-box {
+    box-sizing: border-box;
+    border-radius: @component-border-radius;
+  }
+}
+
+atom-text-editor, atom-text-editor::shadow {
+  .polymorph-source .region {
+    .polymorph.round-box;
+    border: 1px dotted @syntax-result-marker-color-selected;
+  }
+  .polymorph-shadow .region {
+    .polymorph.round-box;
+    border: 1px dotted @syntax-result-marker-color;
+  }
+  .polymorph-shadow-flash .region {
+    .polymorph.round-box;
+    background-color: @syntax-result-marker-color;
+  }
+}
