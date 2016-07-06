@@ -1,6 +1,7 @@
 # Polymorph
 
 ![polymorph](http://classic.battle.net/war3/images/human/spells/polymorph.gif)
+http://classic.battle.net/war3/images/human/spells/polymorph.gif
 
 Simultaneously edit multiple text ranges with related meanings, but different forms.
 
@@ -18,24 +19,24 @@ Selects all marked text ranges.
 ### `Polymorph: Case-preserving Paste`
 Use this instead of `Core: Paste` to coerce the case of the pasted text into the case of the target selection.  For example, if the copied text is "mark-next-in-any" and the target selection is "casePreservingPaste", the pasted text will become "markNextInAny" because the target is in camel case.
 
-![paste](https://github.com/halohalospecial/atom-polymorph/blob/master/images/paste.png?raw=true)
+![paste](https://github.com/halohalospecial/atom-polymorph/blob/master/images/paste.gif?raw=true)
 
 ## Screenshots
 Easier to explain with screenshots! :)
 
-![case1](https://github.com/halohalospecial/atom-polymorph/blob/master/images/case1.png?raw=true)
+![case1](https://github.com/halohalospecial/atom-polymorph/blob/master/images/case1.gif?raw=true)
 
-![case2](https://github.com/halohalospecial/atom-polymorph/blob/master/images/case2.png?raw=true)
+![case2](https://github.com/halohalospecial/atom-polymorph/blob/master/images/case2.gif?raw=true)
 
-![cardinality](https://github.com/halohalospecial/atom-polymorph/blob/master/images/cardinality.png?raw=true)
+![cardinality](https://github.com/halohalospecial/atom-polymorph/blob/master/images/cardinality.gif?raw=true)
 
-![verb-form](https://github.com/halohalospecial/atom-polymorph/blob/master/images/verb-form.png?raw=true)
+![verb-form](https://github.com/halohalospecial/atom-polymorph/blob/master/images/verb-form.gif?raw=true)
 
-![color](https://github.com/halohalospecial/atom-polymorph/blob/master/images/color.png?raw=true)
+![color](https://github.com/halohalospecial/atom-polymorph/blob/master/images/color.gif?raw=true)
 
-![inverse](https://github.com/halohalospecial/atom-polymorph/blob/master/images/inverse.png?raw=true)
+![inverse](https://github.com/halohalospecial/atom-polymorph/blob/master/images/inverse.gif?raw=true)
 
-![xml](https://github.com/halohalospecial/atom-polymorph/blob/master/images/xml.png?raw=true)
+![xml](https://github.com/halohalospecial/atom-polymorph/blob/master/images/xml.gif?raw=true)
 
 ## Credits
 
