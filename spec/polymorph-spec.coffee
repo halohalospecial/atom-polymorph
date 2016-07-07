@@ -158,6 +158,29 @@ describe 'Polymorph', ->
     [MARK-NEXT-IN-ANY-CASE]
     [mark-next-in-any-case]
     ''', 6
+    testMarkNextInAnyCaseAndForm editor, '''
+    export const ADD_TODO = 'ADD_TODO'
+    export const [REMOVE_TODO] = 'REMOVE_TODO'
+
+    export function addTodo(text) {
+      return { type: ADD_TODO, text }
+    }
+
+    export function removeTodo(index) {
+      return { type: REMOVE_TODO, index }
+    }
+    ''','''
+    export const ADD_TODO = 'ADD_TODO'
+    export const [REMOVE_TODO] = '[REMOVE_TODO]'
+
+    export function addTodo(text) {
+      return { type: ADD_TODO, text }
+    }
+
+    export function [removeTodo](index) {
+      return { type: [REMOVE_TODO], index }
+    }
+    ''', 3
 
   it 'should replace shadows when source was replaced', ->
     testMarkNextInAnyCaseAndForm editor, '''

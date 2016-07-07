@@ -9,6 +9,8 @@ Easier to explain with screenshots! :)
 
 ![case2](https://github.com/halohalospecial/atom-polymorph/blob/master/images/case2.gif?raw=true)
 
+![redux](https://github.com/halohalospecial/atom-polymorph/blob/master/images/redux.gif?raw=true)
+
 ![cardinality](https://github.com/halohalospecial/atom-polymorph/blob/master/images/cardinality.gif?raw=true)
 
 ![verb-form](https://github.com/halohalospecial/atom-polymorph/blob/master/images/verb-form.gif?raw=true)
@@ -22,7 +24,7 @@ Easier to explain with screenshots! :)
 ## Commands
 
 ### `Polymorph: Mark Next In Any Case And Form`
-Marks the next text range which has a similar meaning, but different letter case or form, with the active selection.  If nothing is selected, this will select the longest "superword" under the cursor.  Invoke this multiple times to mark the next matching text ranges, similar to `Find And Replace: Select Next`.  Press `escape` when you're done.
+Marks the next text range which has a related meaning with the active selection, but has a different letter case or form.  If nothing is selected, this will select the longest "superword" under the cursor.  Invoke this multiple times to mark the next matching text ranges, similar to `Find And Replace: Select Next`.  Editing the source text range will also edit the marked ranges.  Press `escape` when you're done.
 
 ### `Polymorph: Skip Last Marked`
 Unmarks the last marked text range.  Invoking `Polymorph: Mark Next In Any Case And Form` again will mark the next matching text range, skipping the unmarked one.  This command is useful if Polymorph marked an incorrect text range.

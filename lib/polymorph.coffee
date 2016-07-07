@@ -345,7 +345,8 @@ module.exports = Polymorph =
     # If the source is "mark", it will match "marks" (pluralized form), instead of just "mark".
     query = @dedup(queryParts).sort((a, b) -> b.length - a.length).join('|')
 
-    # console.log 'query', query # # #
+    if atom.inDevMode()
+      console.log 'sourceText', sourceText, 'query', query
 
     pattern = new RegExp(query, 'g')
 
@@ -569,7 +570,7 @@ module.exports = Polymorph =
   # snake_case
   snakeCase: (str) ->
     trim(str)
-    .replace(/(?!^)([A-Z])(?![A-Z]|$)/g, '_$1')
+    .replace(/(?!^)([A-Z])(?![A-Z_-]|$)/g, '_$1')
     .replace(/[-]+/g, '_')
     .toLowerCase()
 
