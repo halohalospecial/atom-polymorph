@@ -345,9 +345,6 @@ module.exports = Polymorph =
     # If the source is "mark", it will match "marks" (pluralized form), instead of just "mark".
     query = @dedup(queryParts).sort((a, b) -> b.length - a.length).join('|')
 
-    if atom.inDevMode()
-      console.log 'sourceText', sourceText, 'query', query
-
     pattern = new RegExp(query, 'g')
 
     # Searches for the next match.

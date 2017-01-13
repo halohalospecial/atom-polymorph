@@ -41,6 +41,15 @@ Use this instead of `Core: Paste` to coerce the case of the pasted text into the
 
 ![paste](https://github.com/halohalospecial/atom-polymorph/blob/master/images/paste.gif?raw=true)
 
+## Example keybindings
+```
+'atom-text-editor':
+  'cmd-e': 'polymorph:mark-next-in-any-case-and-form'
+  'shift-cmd-e': 'polymorph:skip-last-marked'
+  'ctrl-e': 'polymorph:select-all-marked'
+  'shift-cmd-v': 'polymorph:case-preserving-paste'
+```
+
 ## Credits
 
 Uses [nlp_compromise](https://www.npmjs.com/package/nlp_compromise) and [tinycolor2](https://www.npmjs.com/package/tinycolor2).

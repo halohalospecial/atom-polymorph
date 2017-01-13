@@ -1,3 +1,7 @@
+## 2.1.4
+* Remove deprecated styles.
+* Add example keybindings.
+
 ## 2.1.3
 * Fix SCREAMING_SNAKE_CASE conversion bug
 
