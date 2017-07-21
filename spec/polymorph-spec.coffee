@@ -201,6 +201,13 @@ describe 'Polymorph', ->
     [select-next-in-any-case]
     ''', 6, 'select-next-in-any-case'
 
+  it 'should capitalize shadow text if it\'s just one subword and source text is capitalized', ->
+    testMarkNextInAnyCaseAndForm editor, '''
+    [editor] = atom.workspace.getActiveTextEditor()
+    ''', '''
+    [editors] = atom.workspace.getActiveText[Editors]()
+    ''', 1, 'editors'
+
   describe 'when source and shadow are in camel or pascal case...', ->
 
     describe '...and source is at the beginning of a line or superword boundary', ->

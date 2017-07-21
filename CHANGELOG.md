@@ -1,3 +1,6 @@
+## 2.2.0
+* Add forced transformation commands.
+
 ## 2.1.4
 * Remove deprecated styles.
 * Add example keybindings.

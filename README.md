@@ -41,6 +41,41 @@ Use this instead of `Core: Paste` to coerce the case of the pasted text into the
 
 ![paste](https://github.com/halohalospecial/atom-polymorph/blob/master/images/paste.gif?raw=true)
 
+### Forced Transformation Commands
+These commands work on selections and ranges marked by Polymorph.
+
+- `Polymorph: Capitalize`
+- `Polymorph: Decapitalize`
+- `Polymorph: Snake Case`
+- `Polymorph: Screaming Snake Case`
+- `Polymorph: Kebab Case`
+- `Polymorph: Cobol Case`
+- `Polymorph: Upcase`
+- `Polymorph: Downcase`
+- `Polymorph: Camel Case`
+- `Polymorph: Pascal Case`
+- `Polymorph: Invert`
+- `Polymorph: Pluralize`
+- `Polymorph: Singularize`
+- `Polymorph: To Past`
+- `Polymorph: To Present`
+- `Polymorph: To Infinitive`
+- `Polymorph: To Gerund`
+- `Polymorph: To Comparative`
+- `Polymorph: To Superlative`
+- `Polymorph: To Noun`
+- `Polymorph: To Adverb`
+- `Polymorph: To Adjective`
+- `Polymorph: To Color Name`
+- `Polymorph: To Color Hex8`
+- `Polymorph: To Color Hex6`
+- `Polymorph: To Color Hex3`
+- `Polymorph: To Color Rgb`
+- `Polymorph: To Color Rgba`
+- `Polymorph: To Color Prgb`
+- `Polymorph: To Color Hsl`
+- `Polymorph: To Color Hsv`
+
 ## Example keybindings
 ```
 'atom-text-editor':

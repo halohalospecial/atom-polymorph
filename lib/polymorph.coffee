@@ -13,6 +13,7 @@ module.exports = Polymorph =
     @sourceScroll = null
     @lastShadowMatchRange = null
     @editing = false
+    @forcedTransformation = false
 
     allForms = {case: true, inverse: true, cardinality: true, verbForm: true, adjectiveForm: true, colorFormat: true}
 
@@ -32,6 +33,38 @@ module.exports = Polymorph =
 
       'core:cancel':  => @stopEditing() if @editing
       # 'blur':  => @stopEditing() if @editing
+
+      'polymorph:capitalize': => @applyToSelections(@capitalize)
+      'polymorph:decapitalize': => @applyToSelections(@decapitalize)
+      'polymorph:snake-case': => @applyToSelections(@snakeCase)
+      'polymorph:screaming-snake-case': => @applyToSelections(@screamingSnakeCase)
+      'polymorph:kebab-case': => @applyToSelections(@kebabCase)
+      'polymorph:cobol-case': => @applyToSelections(@cobolCase)
+      'polymorph:upcase': => @applyToSelections(@upcase)
+      'polymorph:downcase': => @applyToSelections(@downcase)
+      'polymorph:camel-case': => @applyToSelections(@camelCase)
+      'polymorph:pascal-case': => @applyToSelections(@pascalCase)
+      'polymorph:invert': => @applyToSelections(@invert)
+      'polymorph:pluralize': => @applyToSelections(@pluralize)
+      'polymorph:singularize': => @applyToSelections(@singularize)
+      'polymorph:to-past': => @applyToSelections(@toPast)
+      'polymorph:to-present': => @applyToSelections(@toPresent)
+      'polymorph:to-infinitive': => @applyToSelections(@toInfinitive)
+      'polymorph:to-gerund': => @applyToSelections(@toGerund)
+      'polymorph:to-comparative': => @applyToSelections(@toComparative)
+      'polymorph:to-superlative': => @applyToSelections(@toSuperlative)
+      'polymorph:to-noun': => @applyToSelections(@toNoun)
+      'polymorph:to-adverb': => @applyToSelections(@toAdverb)
+      'polymorph:to-adjective': => @applyToSelections(@toAdjective)
+      'polymorph:to-color-name': => @applyToSelections(@toColorName)
+      'polymorph:to-color-hex8': => @applyToSelections(@toColorHex8)
+      'polymorph:to-color-hex6': => @applyToSelections(@toColorHex6)
+      'polymorph:to-color-hex3': => @applyToSelections(@toColorHex3)
+      'polymorph:to-color-rgb': => @applyToSelections(@toColorRgb)
+      'polymorph:to-color-rgba': => @applyToSelections(@toColorRgba)
+      'polymorph:to-color-prgb': => @applyToSelections(@toColorPrgb)
+      'polymorph:to-color-hsl': => @applyToSelections(@toColorHsl)
+      'polymorph:to-color-hsv': => @applyToSelections(@toColorHsv)
 
   deactivate: ->
     @stopEditing()
@@ -104,6 +137,8 @@ module.exports = Polymorph =
       # Monitor source for changes and apply them to the shadows.
       @recentSourceText = editor.getTextInBufferRange sourceMarker.getBufferRange()
       @sourceMarkerOnDidChangeDisposable = editor.onDidChange =>
+        if @forcedTransformation
+          return
         sourceText = editor.getTextInBufferRange sourceMarker.getBufferRange()
         textChanged = @recentSourceText isnt sourceText
         @recentSourceText = sourceText
@@ -137,7 +172,12 @@ module.exports = Polymorph =
                 shadowCase = @shadows[shadowMarker.id].case
                 newShadowText = (@[shadowCase](newShadowText) if shadowCase isnt 'default') || newShadowText
 
-              if sourceCase in ['pascalCase', 'camelCase'] && shadowCase in ['pascalCase', 'camelCase']
+              # Capitalize shadow text if it's just one subword and source text is capitalized.
+              subwords = shadowText.match subwordRegExp()
+              if subwords.length == 1 && @isCapitalized(shadowText)
+                newShadowText = @capitalize(newShadowText) || newShadowText
+
+              else if sourceCase in ['pascalCase', 'camelCase'] && shadowCase in ['pascalCase', 'camelCase']
                 charBefore = editor.getTextInBufferRange [@sourcePosition.translate([0, -1]), @sourcePosition]
                 # Capitalize shadow text if it's capitalized and source text is at a superword boundary (such as space or paren, or at the beginning of a line).
                 if @isCapitalized(shadowText) && @isSuperwordBoundary(charBefore)
@@ -648,6 +688,8 @@ module.exports = Polymorph =
   # Example: The plural form of "firstChild" will be "firstChildren".
   transformLastSubword: (str, transformFunction) ->
     subwords = str.match subwordRegExp()
+    if not subwords
+      return null
     if subwords.length > 1
       [firsts..., last] = subwords
     else
@@ -852,6 +894,18 @@ module.exports = Polymorph =
 
   toColorHsvCompressed: (str) ->
     @toColorHsv(str)?.replace(/\s/g, '')
+
+  applyToSelections: (func) ->
+    @forcedTransformation = true
+    editor = atom.workspace.getActiveTextEditor()
+    editor.transact =>
+      ranges = @markers.map((marker) -> marker.getBufferRange()).concat editor.getSelectedBufferRanges()
+      uniqueRanges = @dedup(ranges.map(JSON.stringify)).map(JSON.parse)
+      for range in uniqueRanges
+        originalText = editor.getTextInBufferRange(range)
+        transformedText = func.bind(@)(originalText)
+        editor.setTextInBufferRange(range, transformedText || originalText)
+    @forcedTransformation = false
 
 #------------------------------------------------------------------------------
 # From underscore-plus:
