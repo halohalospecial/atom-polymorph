@@ -34,37 +34,37 @@ module.exports = Polymorph =
       'core:cancel':  => @stopEditing() if @editing
       # 'blur':  => @stopEditing() if @editing
 
-      'polymorph:capitalize': => @applyToSelections(@capitalize)
-      'polymorph:decapitalize': => @applyToSelections(@decapitalize)
-      'polymorph:snake-case': => @applyToSelections(@snakeCase)
-      'polymorph:screaming-snake-case': => @applyToSelections(@screamingSnakeCase)
-      'polymorph:kebab-case': => @applyToSelections(@kebabCase)
-      'polymorph:cobol-case': => @applyToSelections(@cobolCase)
-      'polymorph:upcase': => @applyToSelections(@upcase)
-      'polymorph:downcase': => @applyToSelections(@downcase)
-      'polymorph:camel-case': => @applyToSelections(@camelCase)
-      'polymorph:pascal-case': => @applyToSelections(@pascalCase)
-      'polymorph:invert': => @applyToSelections(@invert)
-      'polymorph:pluralize': => @applyToSelections(@pluralize)
-      'polymorph:singularize': => @applyToSelections(@singularize)
-      'polymorph:to-past': => @applyToSelections(@toPast)
-      'polymorph:to-present': => @applyToSelections(@toPresent)
-      'polymorph:to-infinitive': => @applyToSelections(@toInfinitive)
-      'polymorph:to-gerund': => @applyToSelections(@toGerund)
-      'polymorph:to-comparative': => @applyToSelections(@toComparative)
-      'polymorph:to-superlative': => @applyToSelections(@toSuperlative)
-      'polymorph:to-noun': => @applyToSelections(@toNoun)
-      'polymorph:to-adverb': => @applyToSelections(@toAdverb)
-      'polymorph:to-adjective': => @applyToSelections(@toAdjective)
-      'polymorph:to-color-name': => @applyToSelections(@toColorName)
-      'polymorph:to-color-hex8': => @applyToSelections(@toColorHex8)
-      'polymorph:to-color-hex6': => @applyToSelections(@toColorHex6)
-      'polymorph:to-color-hex3': => @applyToSelections(@toColorHex3)
-      'polymorph:to-color-rgb': => @applyToSelections(@toColorRgb)
-      'polymorph:to-color-rgba': => @applyToSelections(@toColorRgba)
-      'polymorph:to-color-prgb': => @applyToSelections(@toColorPrgb)
-      'polymorph:to-color-hsl': => @applyToSelections(@toColorHsl)
-      'polymorph:to-color-hsv': => @applyToSelections(@toColorHsv)
+      'polymorph:capitalize': => @applyToMarkedAndSelections(@capitalize)
+      'polymorph:decapitalize': => @applyToMarkedAndSelections(@decapitalize)
+      'polymorph:snake-case': => @applyToMarkedAndSelections(@snakeCase)
+      'polymorph:screaming-snake-case': => @applyToMarkedAndSelections(@screamingSnakeCase)
+      'polymorph:kebab-case': => @applyToMarkedAndSelections(@kebabCase)
+      'polymorph:cobol-case': => @applyToMarkedAndSelections(@cobolCase)
+      'polymorph:upcase': => @applyToMarkedAndSelections(@upcase)
+      'polymorph:downcase': => @applyToMarkedAndSelections(@downcase)
+      'polymorph:camel-case': => @applyToMarkedAndSelections(@camelCase)
+      'polymorph:pascal-case': => @applyToMarkedAndSelections(@pascalCase)
+      'polymorph:invert': => @applyToMarkedAndSelections(@invert)
+      'polymorph:pluralize': => @applyToMarkedAndSelections(@pluralize)
+      'polymorph:singularize': => @applyToMarkedAndSelections(@singularize)
+      'polymorph:to-past': => @applyToMarkedAndSelections(@toPast)
+      'polymorph:to-present': => @applyToMarkedAndSelections(@toPresent)
+      'polymorph:to-infinitive': => @applyToMarkedAndSelections(@toInfinitive)
+      'polymorph:to-gerund': => @applyToMarkedAndSelections(@toGerund)
+      'polymorph:to-comparative': => @applyToMarkedAndSelections(@toComparative)
+      'polymorph:to-superlative': => @applyToMarkedAndSelections(@toSuperlative)
+      'polymorph:to-noun': => @applyToMarkedAndSelections(@toNoun)
+      'polymorph:to-adverb': => @applyToMarkedAndSelections(@toAdverb)
+      'polymorph:to-adjective': => @applyToMarkedAndSelections(@toAdjective)
+      'polymorph:to-color-name': => @applyToMarkedAndSelections(@toColorName)
+      'polymorph:to-color-hex8': => @applyToMarkedAndSelections(@toColorHex8)
+      'polymorph:to-color-hex6': => @applyToMarkedAndSelections(@toColorHex6)
+      'polymorph:to-color-hex3': => @applyToMarkedAndSelections(@toColorHex3)
+      'polymorph:to-color-rgb': => @applyToMarkedAndSelections(@toColorRgb)
+      'polymorph:to-color-rgba': => @applyToMarkedAndSelections(@toColorRgba)
+      'polymorph:to-color-prgb': => @applyToMarkedAndSelections(@toColorPrgb)
+      'polymorph:to-color-hsl': => @applyToMarkedAndSelections(@toColorHsl)
+      'polymorph:to-color-hsv': => @applyToMarkedAndSelections(@toColorHsv)
 
   deactivate: ->
     @stopEditing()
@@ -173,8 +173,8 @@ module.exports = Polymorph =
                 newShadowText = (@[shadowCase](newShadowText) if shadowCase isnt 'default') || newShadowText
 
               # Capitalize shadow text if it's just one subword and source text is capitalized.
-              subwords = shadowText.match subwordRegExp()
-              if subwords.length == 1 && @isCapitalized(shadowText)
+              shadowSubwords = shadowText.match subwordRegExp()
+              if shadowSubwords && shadowSubwords.length == 1 && @isCapitalized(shadowText) && not @isCapitalized(sourceText)
                 newShadowText = @capitalize(newShadowText) || newShadowText
 
               else if sourceCase in ['pascalCase', 'camelCase'] && shadowCase in ['pascalCase', 'camelCase']
@@ -895,16 +895,23 @@ module.exports = Polymorph =
   toColorHsvCompressed: (str) ->
     @toColorHsv(str)?.replace(/\s/g, '')
 
-  applyToSelections: (func) ->
+  applyToMarkedAndSelections: (func) ->
     @forcedTransformation = true
     editor = atom.workspace.getActiveTextEditor()
     editor.transact =>
-      ranges = @markers.map((marker) -> marker.getBufferRange()).concat editor.getSelectedBufferRanges()
-      uniqueRanges = @dedup(ranges.map(JSON.stringify)).map(JSON.parse)
-      for range in uniqueRanges
-        originalText = editor.getTextInBufferRange(range)
+      tempMarkers = []
+      for marker in @markers
+        tempMarker = editor.markBufferRange marker.getBufferRange(), invalidate: 'never', persistent: false
+        tempMarkers.push tempMarker
+      for range in editor.getSelectedBufferRanges()
+        tempMarker = editor.markBufferRange range, invalidate: 'never', persistent: false
+        tempMarkers.push tempMarker
+      for tempMarker in tempMarkers
+        tempMarkerRange = tempMarker.getBufferRange()
+        originalText = editor.getTextInBufferRange(tempMarkerRange)
         transformedText = func.bind(@)(originalText)
-        editor.setTextInBufferRange(range, transformedText || originalText)
+        editor.setTextInBufferRange(tempMarkerRange, transformedText || originalText)
+        tempMarker.destroy()
     @forcedTransformation = false
 
 #------------------------------------------------------------------------------
