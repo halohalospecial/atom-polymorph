@@ -1,3 +1,6 @@
+## 2.2.1
+* Fix forced transformation bug.
+
 ## 2.2.0
 * Add forced transformation commands.
 
