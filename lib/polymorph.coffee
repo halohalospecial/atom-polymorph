@@ -607,7 +607,7 @@ module.exports = Polymorph =
   # snake_case
   snakeCase: (str) ->
     trim(str)
-    .replace(/(?!^)([A-Z])(?![A-Z_-]|$)/g, '_$1')
+    .replace(/(?!^)([A-Z])((?![A-Z_-])|$)/g, '_$1')
     .replace(/[-]+/g, '_')
     .toLowerCase()
 
