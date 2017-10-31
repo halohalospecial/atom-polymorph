@@ -1,3 +1,6 @@
+## 2.2.3
+* Fix \#3. Thanks to @paradox460 for reporting!
+
 ## 2.2.2
 * Fix snake case bug.
 

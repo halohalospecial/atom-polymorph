@@ -709,7 +709,7 @@ module.exports = Polymorph =
   # Applies function only to the last subword.
   applyToLastSubword: (str, func) ->
     subwords = str.match subwordRegExp()
-    if subwords.length > 1
+    if subwords && subwords.length > 1
       [..., last] = subwords
       matchResult = last.match /([-_]*)(\w+)/
       if matchResult
