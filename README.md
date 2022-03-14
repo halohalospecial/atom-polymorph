@@ -90,6 +90,6 @@ These commands work on selections and ranges marked by Polymorph.
 Uses [nlp_compromise](https://www.npmjs.com/package/nlp_compromise) and [tinycolor2](https://www.npmjs.com/package/tinycolor2).
 
 ## Prior Art
-After some searching, the closest I could find is [abolish.vim](http://www.vim.org/scripts/script.php?script_id=1545) by [Tim Pope](http://tpo.pe/).  That vim plugin lets you replace text by specifying some rules (e.g. `:%Subvert/facilit{y,ies}/building{,s}/g` to replace all instances of "facility" with "building" and "facilities" with "buildings").  
+After some searching, the closest I could find was [abolish.vim](http://www.vim.org/scripts/script.php?script_id=1545) by [Tim Pope](http://tpo.pe/).  That vim plugin lets you replace text by specifying some rules (e.g. `:%Subvert/facilit{y,ies}/building{,s}/g` to replace all instances of "facility" with "building" and "facilities" with "buildings").  
 
 Polymorph attempts to figure out the rules instead, making it less precise, but more magical.
